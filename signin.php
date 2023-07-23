@@ -8,6 +8,7 @@
         header('Location: index.php');
     }
     include('./logics/auth/signin_logic.php');
+    $active = 'signin';
 ?>
 
 <!DOCTYPE html>

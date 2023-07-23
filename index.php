@@ -7,6 +7,7 @@
     if (!check_signed_in($con)) {
         header('Location: signin.php');
     }
+    $active = 'homepage'
 ?>
 
 <!DOCTYPE html>

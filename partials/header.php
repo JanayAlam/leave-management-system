@@ -46,13 +46,13 @@
                     </div>
                     <div class="d-flex auth-nav-links">
                         <?php  if (!check_signed_in($con)) { ?>
-                            <a href="signin.php" class="btn btn-sm btn-primary">
+                            <a href="signin.php" class="btn btn-sm <?php if ($active && $active=='signin') { echo 'btn-dark'; } ?>">
                                 <div class="d-flex align-items-center">
                                     <i class="fa-solid fa-right-to-bracket"></i>
                                     <span class="ms-2">Sign in</span>
                                 </div>
                             </a>
-                            <a href="signup.php" class="btn btn-sm btn-primary">
+                            <a href="signup.php" class="btn btn-sm <?php if ($active && $active=='signup') { echo 'btn-dark'; } ?>">
                                 <div class="d-flex align-items-center">
                                     <i class="fa-solid fa-user-plus"></i>
                                     <span class="ms-2">Create an account</span>
