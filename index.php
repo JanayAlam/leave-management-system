@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    include('./logics/conn.php');
+    include('./logics/auth/auth_functions.php');
+
+    if (!check_signed_in($con)) {
+        header('Location: signin.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -38,26 +38,31 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="index.php"
+                        <!-- <a class="nav-link" aria-current="page" href="index.php"
                             >Home</a
                         >
                         <a class="nav-link" href="#">Features</a>
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">Pricing</a> -->
                     </div>
                     <div class="d-flex auth-nav-links">
-                        <a href="signin.php" class="btn btn-sm btn-primary">
-                            <div class="d-flex align-items-center">
-                                <i class="fa-solid fa-right-to-bracket"></i>
-                                <span class="ms-2">Sign in</span>
-                            </div>
-                        </a>
-                        <a href="signup.php" class="btn btn-sm btn-primary">
-                            <div class="d-flex align-items-center">
-                                <i class="fa-solid fa-user-plus"></i>
-                                <span class="ms-2">Create an account</span>
-                            </div>
-                        </a>
-                        <!-- <a href="" class="nav-link">Logout</a> -->
+                        <?php  if (!check_signed_in($con)) { ?>
+                            <a href="signin.php" class="btn btn-sm btn-primary">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    <span class="ms-2">Sign in</span>
+                                </div>
+                            </a>
+                            <a href="signup.php" class="btn btn-sm btn-primary">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span class="ms-2">Create an account</span>
+                                </div>
+                            </a>
+                        <?php } else { ?>
+                            <a href="logout.php" class="btn btn-sm btn-outline-dark">
+                                Logout
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
