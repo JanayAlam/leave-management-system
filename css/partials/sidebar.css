@@ -1,0 +1,11 @@
+.list-group > a {
+    border: 0;
+    /* color: #202020;
+    background-color: #fff; */
+}
+
+.sidebar-active,
+.sidebar-active:hover {
+    background-color: #202020 !important;
+    color: #fff !important;
+}

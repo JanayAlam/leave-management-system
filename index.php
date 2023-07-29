@@ -16,7 +16,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeaveBoard - Homepage</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        .form-floating {
+            margin-bottom: 0.5rem !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -26,7 +30,119 @@
 
     <!-- Content -->
     <div class="container">
-        Homepage
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                <?php $active='dashboard'; @include('./partials/sidebar.php'); ?>
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div>
+                    <h1 class="display-3">Welcome to Leave Board</h1>
+                    <h6 class="text-muted">We have assembled some links to get you started.</h6>
+                    <hr class="mt-0" />
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 mb-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1 fw-bold">Book time off</div>
+                                    <div><i class="fa-regular fa-clock"></i></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="leave-type" name="leave-type">
+                                            <option selected disabled>Select leave type</option>
+                                            <option value="vacation-leave">Vacation Leave</option>
+                                            <option value="sick-leave">Sick Leave</option>
+                                            <option value="unpaid-leave">Unpaid Leave</option>
+                                        </select>
+                                        <label for="leave-type">Leave type</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="leave-duration" name="leave-duration" placeholder="i.e. 10" />
+                                        <label for="leave-duration">Leave duration</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="leave-date" name="leave-date" placeholder="i.e. 10" />
+                                        <label for="leave-date">Date</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" name="comment" id="comment" style="height: 100px"></textarea>
+                                        <label for="comment">Comment...</label>
+                                    </div>
+                                    <button class="btn btn-primary w-100" type="submit">Book time off</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 mb-2">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-light fw-bold">
+                                    <th scope="col">Balance</th>
+                                    <th scope="col" class="text-center">Used</th>
+                                    <th scope="col" class="text-center">Available</th>
+                                    <th scope="col" class="text-center">Allowance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="fw-bold">Vacation</th>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fw-bold">Sick</th>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">365</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fw-bold">Unpaid</th>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">365</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr class="mt-0"/>
+                    <h4 class="display-6 text-center">Leave Calendar</h4>
+                    <div class="fw-bold text-center">July, 2023</div>
+                    <table class="table">
+                        <thead>
+                            <?php
+                                for ($i=1; $i<=31; $i++) {
+                                    echo "<th class='fw-lighter'>" . $i . "</th>";
+                                }
+                            ?>
+                        </thead>
+                        <tbody>
+                            <?php
+                                for ($i=1; $i<=18; $i++) {
+                                    echo "<td class='bg-light fw-lighter'></td>";
+                                }
+                            ?>
+                            <?php
+                                for ($i=19; $i<=23; $i++) {
+                                    echo "<td class='bg-danger fw-lighter'></td>";
+                                }
+                            ?>
+                            <?php
+                                for ($i=24; $i<=31; $i++) {
+                                    echo "<td class='bg-light fw-lighter'></td>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->

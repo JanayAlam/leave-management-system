@@ -21,6 +21,11 @@
             .form-label {
                 margin-bottom: 0rem !important;
             }
+            @media (max-width: 768px) {
+                .side-img-display-hide {
+                    display: none !important;
+                }
+            }
         </style>
     </head>
     <body>
@@ -33,7 +38,7 @@
         <div class="container">
             <div class="card card-body mt-5">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12 side-img-display-hide">
                         <div
                             class="d-flex justify-content-center align-items-center"
                         >

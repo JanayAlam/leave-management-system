@@ -19,6 +19,7 @@
 
         <!-- START: Local Styles -->
         <link rel="stylesheet" href="./css/partials/header.css" />
+        <link rel="stylesheet" href="./css/partials/sidebar.css" />
         <!-- END: Local Styles -->
     </head>
     <body>
