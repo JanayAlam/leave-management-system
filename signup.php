@@ -131,7 +131,7 @@
                                         placeholder="Reenter the password"
                                     />
                                 </div>
-                                <div class="mb-2">
+                                <!-- <div class="mb-2">
                                     <label for="role" class="form-label"
                                         >Role</label
                                     >
@@ -148,7 +148,7 @@
                                             Employee
                                         </option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="form-check mb-2">
                                     <input
                                         class="form-check-input"
