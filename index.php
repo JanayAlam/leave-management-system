@@ -91,8 +91,8 @@
                                 <tr>
                                     <th scope="row" class="fw-bold">Vacation</th>
                                     <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">10</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="fw-bold">Sick</th>

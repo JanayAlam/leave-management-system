@@ -29,7 +29,7 @@
             <i class="fa-regular fa-file-lines"></i> Reports
         </a>
         <a
-            href="#"
+            href="company.php"
             class="list-group-item list-group-item-action <?php if ($page == 'company') { echo 'active'; } ?>"
             aria-current="true"
         >

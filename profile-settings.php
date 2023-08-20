@@ -70,7 +70,7 @@
                                 <div class="col-10"><?php echo get_dept($user_data['dept']); ?></div>
                             </div>
                             <div class="mt-2">
-                                <a href="settings.php" class="btn btn-sm btn-dark px-4">Edit Information</a>
+                                <a href="settings.php" class="btn btn-sm btn-primary px-4">Edit Information</a>
                             </div>
                         </div>
                     </div>
