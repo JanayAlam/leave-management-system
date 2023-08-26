@@ -1,13 +1,17 @@
 <?php
     session_start();
 
-    include('./logics/conn.php');
-    include('./logics/auth/auth_functions.php');
+    require_once './logics/conn.php';
+    require_once './logics/auth/auth_functions.php';
+    require_once './logics/utils.php';
 
     if (!check_signed_in($con)) {
         header('Location: signin.php');
     }
-    $active = 'homepage'
+
+    $active = 'homepage';
+    
+    require_once './logics/current_profiles_status.php';
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +54,13 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form method="post">
+                                <form method="POST" action="./logics/book_leave.php">
                                     <div class="form-floating">
                                         <select class="form-select" id="leave-type" name="leave-type">
                                             <option selected disabled>Select leave type</option>
-                                            <option value="vacation-leave">Vacation Leave</option>
-                                            <option value="sick-leave">Sick Leave</option>
-                                            <option value="unpaid-leave">Unpaid Leave</option>
+                                            <option value="vacation">Vacation Leave</option>
+                                            <option value="sick">Sick Leave</option>
+                                            <option value="unpaid">Unpaid Leave</option>
                                         </select>
                                         <label for="leave-type">Leave type</label>
                                     </div>
@@ -69,8 +73,8 @@
                                         <label for="leave-date">Date</label>
                                     </div>
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a comment here" name="comment" id="comment" style="height: 100px"></textarea>
-                                        <label for="comment">Comment...</label>
+                                        <textarea class="form-control" placeholder="Leave a comment here" name="comments" id="comments" style="height: 100px"></textarea>
+                                        <label for="comments">Comment...</label>
                                     </div>
                                     <button class="btn btn-primary w-100" type="submit">Book time off</button>
                                 </form>
@@ -78,6 +82,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-12 mb-2">
+                        <div class="fw-bold"><?php echo get_month_str($month_num) . ', ' . date('Y'); ?></div>
                         <table class="table">
                             <thead>
                                 <tr class="table-light fw-bold">
@@ -90,20 +95,20 @@
                             <tbody>
                                 <tr>
                                     <th scope="row" class="fw-bold">Vacation</th>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">10</td>
+                                    <td class="text-center"><?php echo $vac_leave_count; ?></td>
+                                    <td class="text-center"><?php echo 10-$vac_leave_count; ?></td>
                                     <td class="text-center">10</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="fw-bold">Sick</th>
-                                    <td class="text-center">10</td>
+                                    <td class="text-center"><?php echo $sick_leave_count; ?></td>
+                                    <td class="text-center"><?php echo 60-$sick_leave_count; ?></td>
                                     <td class="text-center">60</td>
-                                    <td class="text-center">365</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="fw-bold">Unpaid</th>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">60</td>
+                                    <td class="text-center"><?php echo $unpaid_leave_count; ?></td>
+                                    <td class="text-center">-</td>
                                     <td class="text-center">365</td>
                                 </tr>
                             </tbody>
@@ -113,7 +118,7 @@
                 <div class="row">
                     <hr class="mt-0"/>
                     <h4 class="display-6 text-center">Leave Calendar</h4>
-                    <div class="fw-bold text-center">July, 2023</div>
+                    <div class="fw-bold text-center"><?php echo get_month_str($month_num) . ', ' . date('Y'); ?></div>
                     <table class="table">
                         <thead>
                             <?php
@@ -124,18 +129,12 @@
                         </thead>
                         <tbody>
                             <?php
-                                for ($i=1; $i<=18; $i++) {
-                                    echo "<td class='bg-light fw-lighter'></td>";
-                                }
-                            ?>
-                            <?php
-                                for ($i=19; $i<=23; $i++) {
-                                    echo "<td class='bg-danger fw-lighter'></td>";
-                                }
-                            ?>
-                            <?php
-                                for ($i=24; $i<=31; $i++) {
-                                    echo "<td class='bg-light fw-lighter'></td>";
+                                for ($i=1; $i<=31; $i++) {
+                                    if ($arr[$i] == 0) {
+                                        echo "<td class='bg-light fw-lighter'></td>";
+                                    } else {
+                                        echo "<td class='bg-danger fw-lighter'></td>";
+                                    }
                                 }
                             ?>
                         </tbody>

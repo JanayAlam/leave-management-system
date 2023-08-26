@@ -4,9 +4,13 @@
     include('./logics/conn.php');
     include('./logics/auth/auth_functions.php');
 
-    if (check_signed_in($con)) {
+    $result = mysqli_query($con, "SELECT COUNT(*) as user_count FROM users;");
+    $user_count = mysqli_fetch_assoc($result)['user_count'];
+
+    if (check_signed_in($con) || $user_count > 0) {
         header('Location: index.php');
     }
+    
     include('./logics/auth/signup_logic.php');
     $active = 'signup';
 ?>

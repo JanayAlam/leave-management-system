@@ -1,10 +1,4 @@
 <?php
-function get_user($con) {
-    $user_id = $_SESSION['user_id'];
-    $query = "SELECT email, role, first_name, last_name, dept, user_id, inviter_id FROM users, (SELECT * from profiles where user_id='$user_id' limit 1) P WHERE users.id=P.user_id;";
-    $result = mysqli_query($con, $query);
-    return mysqli_fetch_array($result, MYSQLI_ASSOC);
-}
 
 function get_role($str) {
     if ($str == 'hr') {
@@ -39,7 +33,7 @@ function get_inviter($inviter_id, $con) {
         return 'Self';
     }
     
-    $query = "SELECT first_name, last_name FROM users WHERE id=$inviter_id;";
+    $query = "SELECT first_name, last_name FROM profiles WHERE user_id=$inviter_id;";
     $result = mysqli_query($con, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {

@@ -12,7 +12,10 @@
 
     require_once './logics/settings/profile_settings_functions.php';
 
-    $user_data = get_user($con);
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT email, role, first_name, last_name, dept, user_id, inviter_id FROM users, (SELECT * from profiles where user_id='$user_id' limit 1) P WHERE users.id=P.user_id;";
+    $result = mysqli_query($con, $query);
+    $user_data = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
