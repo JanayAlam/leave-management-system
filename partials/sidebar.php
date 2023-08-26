@@ -33,13 +33,13 @@
         >
             <i class="fa-regular fa-thumbs-up"></i> Leaves to Approve
         </a>
-        <a
+        <!-- <a
             href="#"
             class="list-group-item list-group-item-action <?php if ($page == 'reports') { echo 'active'; } ?>"
             aria-current="true"
         >
             <i class="fa-regular fa-file-lines"></i> Reports
-        </a>
+        </a> -->
         <a
             href="company.php"
             class="list-group-item list-group-item-action <?php if ($page == 'company') { echo 'active'; } ?>"
